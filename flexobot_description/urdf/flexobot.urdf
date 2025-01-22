@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="flexobot">
+
+  <xacro:property name="PI" value="3.14159265359" />
+  <xacro:property name="effort" value="3.0" />
+  <xacro:property name="velocity" value="1.0" />
+
+  <!-- Include gazeob ros2 controllers -->
+  <xacro:include filename="$(find flexobot_description)/urdf/flexobot_gazebo.xacro" />
+
+  <!-- Include ros2_control Plugins -->
+  <xacro:include filename="$(find flexobot_description)/urdf/flexobot_ros2_control.xacro" />
+
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-3.46944695195361E-17 -5.27355936696949E-16 0.00417061878357389"
+        rpy="0 0 0" />
+      <mass
+        value="0.0251675530401614" />
+      <inertia
+        ixx="7.81087189306322E-06"
+        ixy="-2.29334536832049E-20"
+        ixz="-1.52736834974937E-21"
+        iyy="7.81087189306321E-06"
+        iyz="-4.26322242903622E-20"
+        izz="1.51878413844311E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/world.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/world.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="0.000405737542620868 -0.000688089446083173 0.0183322771442043"
+        rpy="0 0 0" />
+      <mass
+        value="0.0788786709794484" />
+      <inertia
+        ixx="0.000121636213507177"
+        ixy="-8.19277214145231E-07"
+        ixz="-7.82064904082861E-10"
+        iyy="0.000100539876823232"
+        iyz="3.80509750886552E-07"
+        izz="0.000182490258499609" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="virtual_joint" type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="-0.0114451054458973 0.00519157578950394 0.0286904592116006"
+        rpy="0 0 0" />
+      <mass
+        value="0.0784191074395318" />
+      <inertia
+        ixx="8.96074039776329E-05"
+        ixy="-6.2544908615078E-06"
+        ixz="3.92762722688045E-06"
+        iyy="8.57885668187251E-05"
+        iyz="-9.47177060979594E-06"
+        izz="5.37517605300523E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_1" type="revolute">
+    <origin
+      xyz="0 0 0.0592"
+      rpy="0 0 0" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-${PI/2}"
+      upper="${PI/2}"
+      effort="${effort}"
+      velocity="${velocity}" />
+  </joint>
+
+  <link
+    name="link_3">
+    <inertial>
+      <origin
+        xyz="0.0549405169305915 -0.00392935584957316 -0.0105581714607817"
+        rpy="0 0 0" />
+      <mass
+        value="0.0809699927351933" />
+      <inertia
+        ixx="1.86450193915041E-05"
+        ixy="8.51696399529771E-06"
+        ixz="1.58242576845025E-07"
+        iyy="0.000196110524408433"
+        iyz="1.25588193962328E-07"
+        izz="0.000206356511657424" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_2" type="revolute">
+    <origin
+      xyz="0.018798 -0.0064136 0.060669"
+      rpy="-1.5708 0 -2.1585" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-${PI/4}"
+      upper="${PI/2}"
+      effort="${effort}"
+      velocity="${velocity}"/>
+  </joint>
+
+  <link
+    name="link_4">
+    <inertial>
+      <origin
+        xyz="-0.0210908889413765 -0.0357041174436787 -0.00887902727825163"
+        rpy="0 0 0" />
+      <mass
+        value="0.0487547664757789" />
+      <inertia
+        ixx="3.09131729767179E-05"
+        ixy="-1.40104737056989E-05"
+        ixz="-1.19312832307919E-07"
+        iyy="1.64985022015839E-05"
+        iyz="-1.96701979348353E-07"
+        izz="4.1336968292906E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_3" type="revolute">
+    <origin
+      xyz="0.10988 -0.0051499 -0.0265"
+      rpy="0 0 0" />
+    <parent
+      link="link_3" />
+    <child
+      link="link_4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-${PI/2}"
+      upper="${PI/3}"
+      effort="${effort}"
+      velocity="${velocity}" />
+  </joint>
+
+  <link
+    name="link_5">
+    <inertial>
+      <origin
+        xyz="-0.0025292705231304 0.000329466129465342 0.0155888327807382"
+        rpy="0 0 0" />
+      <mass
+        value="0.0201365130698795" />
+      <inertia
+        ixx="5.07329751096545E-06"
+        ixy="-1.25246683877049E-07"
+        ixz="3.68513394141484E-07"
+        iyy="4.12747905420735E-06"
+        iyz="-4.77131353428968E-08"
+        izz="2.77484501725935E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_4" type="revolute">
+    <origin
+      xyz="-0.055106 -0.09055 -0.0051999"
+      rpy="2.1175 1.5708 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="link_5" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-${PI}"
+      upper="${PI}"
+      effort="${effort}"
+      velocity="${velocity}" />
+  </joint>
+
+  <link
+    name="link_6">
+    <inertial>
+      <origin
+        xyz="-0.0296307609134434 0.00626869679955394 -0.0111169062713219"
+        rpy="0 0 0" />
+      <mass
+        value="0.0272245391932179" />
+      <inertia
+        ixx="3.53977171941094E-06"
+        ixy="1.29412445762316E-06"
+        ixz="-1.61650776008783E-06"
+        iyy="1.04165823478393E-05"
+        iyz="2.33013573634385E-07"
+        izz="9.29252440136182E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_5" type="revolute">
+    <origin
+      xyz="-0.018841 0.0024495 0.03005"
+      rpy="1.7783 1.5708 -1.4877" />
+    <parent
+      link="link_5" />
+    <child
+      link="link_6" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-${PI/2}"
+      upper="${PI/5}"
+      effort="${effort}"
+      velocity="${velocity}" />
+  </joint>
+
+  <link
+    name="left_claw">
+    <inertial>
+      <origin
+        xyz="0.0397287104791434 -0.0041166388774708 -0.0227814719706208"
+        rpy="0 0 0" />
+      <mass
+        value="0.0129183472009991" />
+      <inertia
+        ixx="9.44842659854508E-07"
+        ixy="4.56750069905815E-07"
+        ixz="1.11090654643447E-06"
+        iyy="3.37254914953445E-06"
+        iyz="-1.99014072519522E-07"
+        izz="3.01040288312076E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/left_claw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/left_claw.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_6" type="revolute">
+    <origin
+      xyz="-0.042626 -0.0026978 -0.0239"
+      rpy="-1.5708 0 -3.1416" />
+    <parent
+      link="link_6" />
+    <child
+      link="left_claw" />
+    <axis
+      xyz="-0.39945 0 -0.91676" />
+    <limit
+      lower="-${PI/5}"
+      upper="0.0"
+      effort="${effort}"
+      velocity="${velocity}" />
+  </joint>
+
+  <link
+    name="right_claw">
+    <inertial>
+      <origin
+        xyz="-0.0360031237903298 -0.00355765726721011 -0.0193729738095059"
+        rpy="0 0 0" />
+      <mass
+        value="0.0144409711817548" />
+      <inertia
+        ixx="1.01229742995914E-06"
+        ixy="-4.46912362281357E-07"
+        ixz="-1.12874428556178E-06"
+        iyy="3.47937636344843E-06"
+        iyz="-1.96509950217254E-07"
+        izz="3.16060252680992E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/right_claw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://flexobot_description/meshes/right_claw.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_7" type="revolute">
+    <origin
+      xyz="-0.042047 -0.0013685 0.003"
+      rpy="1.5708 0 0" />
+    <parent
+      link="link_6" />
+    <child
+      link="right_claw" />
+    <axis
+      xyz="0.39945 0 -0.91676" />
+    <limit
+      lower="0.0"
+      upper="${PI/5}"
+      effort="${effort}"
+      velocity="${velocity}" />
+    <mimic
+      joint="joint_6"
+      multiplier="-1"
+      offset="0" />
+  </joint>
+
+  <link name="end_eff"> 
+  </link>
+
+  <joint name="end_eff_joint" type="fixed">
+    <origin
+      xyz="-0.12429 0.039701 -0.013081"
+      rpy="0.08051 -0.0023491 2.7307" />
+    <parent
+      link="link_6" />
+    <child
+      link="end_eff" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
