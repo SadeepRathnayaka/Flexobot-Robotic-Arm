@@ -65,6 +65,22 @@ A joystick controller provides an intuitive way to operate the robotic arm in re
 - Adjustable speed control for precise operations. (TODO)
 ---
 
+## Hardware Testing
+The fully assembled robotic arm is currently in the testing phase. Key focus areas include:
+
+- **Actuator Calibration**: Verifying servo motor functionality and ensuring precise joint control.
+- **Stability Testing**: Assessing the arm’s ability to maintain stable poses under load.
+- **Real-World Validation**: Testing the integration of ROS2 and MoveIt2 configurations with the physical hardware.
+- **Joystick Control Validation**: Ensuring smooth and intuitive real-time control of the arm via the joystick.
+
+Preliminary results indicate smooth motion and accurate path execution. However, fine-tuning is ongoing to optimize performance and reliability.
+
+
+
+
+https://github.com/user-attachments/assets/b326969a-dba4-4c95-a78f-aac0ed1b5916
+
+
 
 
 
