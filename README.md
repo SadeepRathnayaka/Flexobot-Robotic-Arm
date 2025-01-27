@@ -9,6 +9,7 @@ This repository showcases a 6-degree-of-freedom (6-DOF) robotic arm designed and
 2. [ROS2 Framework Configuration](#ros2-framework-configuration)
 3. [MoveIt2 Framework Configuration](#moveit2-framework-configuration)
 4. [Joystick Control](#joystick-control)
+5. [Hardware Implementation](#hardware-implementation)
 
 
 ---
