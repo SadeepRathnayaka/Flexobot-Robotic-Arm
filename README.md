@@ -19,12 +19,16 @@ The robotic arm was designed in SolidWorks. The design process focused on achiev
 - **Joints and Axes**: The arm includes six rotational joints, allowing a wide range of motion.
 - **Actuators**: Powered by three MG996R and three MG90S servo motors.
 
-![SolidWorks Design](images/solidworks_design.png)
-
 Key Features:
 - Modular assembly for easy maintenance.
 - Custom-designed brackets and holders for servos and sensors.
 - Compact and efficient design to minimize weight and maximize stability.
+
+
+
+https://github.com/user-attachments/assets/8f252433-98d1-481b-a00f-6d7066f3ebcc
+
+
 
 ---
 
