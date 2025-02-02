@@ -12,6 +12,13 @@ This repository showcases a 6-degree-of-freedom (6-DOF) robotic arm designed and
 5. [Hardware Implementation](#hardware-implementation)
 
 
+
+
+
+
+https://github.com/user-attachments/assets/9a8fcc9a-b552-482a-813d-4995285c32a8
+
+
 ---
 
 ## 3D Model Design
@@ -77,6 +84,10 @@ The fully assembled robotic arm is currently in the testing phase. Key focus are
 Preliminary results indicate smooth motion and accurate path execution. However, fine-tuning is ongoing to optimize performance and reliability.
 
 
+
+
+
+https://github.com/user-attachments/assets/c61f112d-b7dd-4a6d-ab49-672929309d49
 
 
 https://github.com/user-attachments/assets/b326969a-dba4-4c95-a78f-aac0ed1b5916
